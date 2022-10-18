@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-using-pvc-delete
+spec:  
+  volumes:
+        - name: nfs-pvc
+          persistentVolumeClaim:
+            claimName: test-pvc-delete
+  containers:
+    - name: my-container
+      volumeMounts:
+        - name: nfs-pvc # This is the name of the volume we set at the pod level
+          mountPath: /var/simple # Where to mount this directory in our container
+      
+      # Now that we have a directory mounted at /var/simple, let's 
+      # write to a file inside it!
+      image: alpine
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do date >> /var/simple/file.txt; sleep 5; done"]
+

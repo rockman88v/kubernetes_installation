@@ -1,0 +1,17 @@
+helm search repo nginx
+helm pull bitnami/nginx-ingress-controller --version=9.1.22
+tar -xzf nginx-ingress-controller-9.1.22.tgz
+cp nginx-ingress-controller/values.yaml values-nginx-ingress-controller.yaml
+vi values-nginx-ingress-controller.yaml
+helm -n nginx-ingress install nginx-ingress-controller -f values-nginx-ingress-controller.yaml nginx-ingress-controller
+kubectl -n nginx-ingress get all
+kubectl -n nginx-ingress describe pod nginx-ingress-controller-cb8d4f6cd-wh6nm
+telnet localhost 30080
+telnet 192.168.10.11 30080
+mkdir example
+cd example/
+vi apple.yaml
+kubectl -n nginx-ingress apply -f apple.yaml
+kubectl -n monitoring apply -f apple.yaml
+helm -n nginx-ingress upgrade nginx-ingress-controller -f values-nginx-ingress-controller.yaml nginx-ingress-controller
+

@@ -1,0 +1,10 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = rancher.viettq.com
+DNS.2 = jenkins.viettq.com
+DNS.3 = prometheus.viettq.com
+DNS.4 = *.viettq.com

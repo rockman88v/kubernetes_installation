@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio-monitor
+  # Change this to the namespace the Prometheus instance is running in
+  namespace: monitoring
+  labels:
+    k8s-app: minio-monitor
+spec:
+  endpoints:
+  - port: 9000
+    interval: 15s
+    scheme: http
+    metrics_path: /minio/v2/metrics/cluster
+  namespaceSelector:
+    matchNames:
+    - monitoring    
+  selector:
+    matchLabels:      
+      app.kubernetes.io/instance: minio
+  #    app.kubernetes.io/managed-by: Helm
+  #    app.kubernetes.io/name: minio
+  #    helm.sh/chart: minio-11.2.10

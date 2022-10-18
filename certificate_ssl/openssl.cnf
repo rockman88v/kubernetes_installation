@@ -1,0 +1,25 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+[req_distinguished_name]
+countryName = VN
+countryName_default = VN
+stateOrProvinceName = HN
+stateOrProvinceName_default = HN
+localityName = HN
+localityName_default = HN
+organizationalUnitName = VietTQ_DEVOPS
+organizationalUnitName_default = VietTQ_DEVOPS
+commonName = *.viettq.com
+commonName_max = 64
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = *.monitor.viettq.com
+DNS.2 = *.prod.viettq.com
+DNS.3 = *.uat.viettq.com
+DNS.4 = *.dev.viettq.com
+DNS.5 = *.demo.viettq.com

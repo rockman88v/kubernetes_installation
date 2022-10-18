@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    viettq: viettq-prometheus-rule
+    app: kube-prometheus-stack  
+    role: alert-rules
+  name: viettq-minio-prometheus-rule #Rule name to display in k8s PrometheusRule list
+spec:
+  groups:
+  - name: "viettq-minio-rule" #Rule name to display in PrometheusRule Web
+    rules:
+    - alert: MinioDiskOffline
+      for: 1m
+      expr: minio_cluster_nodes_offline_total != 1
+      annotations:
+        message: Minio Disk offline

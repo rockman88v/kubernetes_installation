@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: kube-prometheus-stack-prometheus
+    app: kube-prometheus-stack
+    role: alert-rules
+  name: my-app-rule
+spec:
+  groups:
+  - name: "may-app-rule.rules"
+    rules:
+    - alert: PodDown
+      for: 1m
+      expr: sum(up{job="your-service-monitor-name"}) < 1 or absent(up{job="your-service-monitor-name"})
+      annotations:
+        message: The deployment has less than 1 pod running.

@@ -1,0 +1,8 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm pull prometheus-community/kube-prometheus-stack --version 34.9.0
+tar -xzf kube-prometheus-stack-34.9.0.tgz
+cp kube-prometheus-stack/values.yaml values-prometheus-clusterIP.yaml
+helm install prometheus-stack -f values-prometheus-clusterIP.yaml kube-prometheus-stack -n monitoring
+helm upgrade prometheus-stack -f values-prometheus-clusterIP.yaml kube-prometheus-stack -n monitoring
+
