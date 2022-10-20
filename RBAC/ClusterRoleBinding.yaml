@@ -2,7 +2,6 @@
 #Info: Allow user=default/dev-user1 Action=Get Resource=namespaces
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
 kind: ClusterRoleBinding
 metadata:
   name: crb.dev-user1.get-namespaces
@@ -46,6 +45,22 @@ roleRef:
   kind: ClusterRole
   name: get-persistentvolumes
   apiGroup: rbac.authorization.k8s.io    
+
+#ClusterRoleBinding: crb.dev-user1.get-ingressclasses
+#Info: Allow user=dev-user1 Action=Get Resource=ingressclasses
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crb.dev-user1.get-ingressclasses
+subjects:
+- kind: ServiceAccount
+  name: dev-user1 # Name is case sensitive
+  namespace: default  
+roleRef:
+  kind: ClusterRole
+  name: get-ingressclasses
+  apiGroup: rbac.authorization.k8s.io 
   
 #ClusterRoleBinding: crb.dev-user1.get-storageclasses
 #Info: Allow user=dev-user1 Action=Get Resource=storageclasses
