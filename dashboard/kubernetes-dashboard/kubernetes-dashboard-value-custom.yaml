@@ -4,7 +4,7 @@ ingress:
   enabled: true
   ## Kubernetes Dashboard Ingress Class
   # className: "example-lb"
-  className: local
+  className: nginx
   paths:
     - /
   hosts:
