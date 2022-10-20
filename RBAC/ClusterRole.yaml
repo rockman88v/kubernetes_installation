@@ -1,0 +1,48 @@
+#ClusterRole: get-namespaces
+#Permission: get namespaces
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: get-namespaces
+rules:
+- apiGroups: [""]
+  #
+  # at the HTTP level, the name of the resource for accessing Secret
+  # objects is "secrets"
+  resources: ["namespaces"]
+  verbs: ["get", "watch", "list"]  
+  
+
+#ClusterRole: get-nodes
+#Permission: get nodes
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: get-nodes
+rules:
+- apiGroups: [""]
+  #
+  # at the HTTP level, the name of the resource for accessing Secret
+  # objects is "secrets"
+  resources: ["nodes"]
+  verbs: ["get", "watch", "list"]  
+  
+#ClusterRole: get-storageclasses
+#Permission: get storageclasses
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: get-storageclasses
+rules:
+- apiGroups: [""]
+  #
+  # at the HTTP level, the name of the resource for accessing Secret
+  # objects is "secrets"
+  resources: ["storageclasses"]
+  verbs: ["get", "watch", "list"]    

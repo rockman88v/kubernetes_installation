@@ -1,0 +1,48 @@
+#ClusterRoleBinding: crb.dev-user1.get-namespace
+#Info: Allow user=default/dev-user1 Action=Get Resource=namespaces
+---
+apiVersion: rbac.authorization.k8s.io/v1
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: ClusterRoleBinding
+metadata:
+  name: crb.dev-user1.get-namespaces
+subjects:
+- kind: ServiceAccount
+  name: dev-user1 # Name is case sensitive
+  namespace: default  
+roleRef:
+  kind: ClusterRole
+  name: get-namespaces
+  apiGroup: rbac.authorization.k8s.io
+  
+#ClusterRoleBinding: crb.dev-user1.get-nodes
+#Info: Allow user=dev-user1 Action=Get Resource=nodes
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crb.dev-user1.get-nodes
+subjects:
+- kind: ServiceAccount
+  name: dev-user1 # Name is case sensitive
+  namespace: default  
+roleRef:
+  kind: ClusterRole
+  name: get-nodes
+  apiGroup: rbac.authorization.k8s.io  
+  
+#ClusterRoleBinding: crb.dev-user1.get-storageclasses
+#Info: Allow user=dev-user1 Action=Get Resource=storageclasses
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crb.dev-user1.get-storageclasses
+subjects:
+- kind: ServiceAccount
+  name: dev-user1 # Name is case sensitive
+  namespace: default  
+roleRef:
+  kind: ClusterRole
+  name: get-storageclasses
+  apiGroup: rbac.authorization.k8s.io 
