@@ -4,6 +4,7 @@ metadata:
   namespace: dev
   name: dev.role.view
 rules:
-- apiGroups: [""] # "" indicates the core API group
+- apiGroups: ["","apps","batch","autoscaling"] # "" indicates the core API group
   resources: ["*"]
+  #resources: ["pods","deployments"]
   verbs: ["get","list","watch"]

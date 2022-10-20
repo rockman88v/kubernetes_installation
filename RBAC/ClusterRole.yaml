@@ -43,7 +43,7 @@ kind: ClusterRole
 metadata:  
   name: get-ingressclasses
 rules:
-- apiGroups: [""]  
+- apiGroups: ["networking.k8s.io"]  
   resources: ["ingressclasses"]
   verbs: ["get", "watch", "list"]   
   
@@ -55,7 +55,7 @@ kind: ClusterRole
 metadata:  
   name: get-storageclasses
 rules:
-- apiGroups: [""]
-  resources: ["storageclasses"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses","sc"]
   verbs: ["get", "watch", "list"]    
   
