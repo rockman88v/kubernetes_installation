@@ -31,6 +31,22 @@ roleRef:
   name: get-nodes
   apiGroup: rbac.authorization.k8s.io  
   
+#ClusterRoleBinding: crb.dev-user1.get-persistentvolumes
+#Info: Allow user=dev-user1 Action=Get Resource=persistentvolumes
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crb.dev-user1.get-persistentvolumes
+subjects:
+- kind: ServiceAccount
+  name: dev-user1 # Name is case sensitive
+  namespace: default  
+roleRef:
+  kind: ClusterRole
+  name: get-persistentvolumes
+  apiGroup: rbac.authorization.k8s.io    
+  
 #ClusterRoleBinding: crb.dev-user1.get-storageclasses
 #Info: Allow user=dev-user1 Action=Get Resource=storageclasses
 ---
