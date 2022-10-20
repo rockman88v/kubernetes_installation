@@ -59,4 +59,3 @@ rules:
   resources: ["storageclasses"]
   verbs: ["get", "watch", "list"]    
   
-  ingressclasses
